@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donghyun | Healthcare Data Professional</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f2ee;
+      --text: #1c1917;
+      --muted: #78716c;
+      --accent: #1d4ed8;
+      --accent-light: #dbeafe;
+      --line: #e2ddd8;
+      --card: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 32px 120px;
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 72px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .location {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .affiliation {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .location::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 48px 0;
+    }
+
+    /* Section */
+    section {
+      margin-bottom: 60px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+    section:nth-child(5) { animation-delay: 0.4s; }
+    section:nth-child(6) { animation-delay: 0.5s; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #3c3733;
+      line-height: 1.85;
+    }
+
+    /* Work cards */
+    .work-block {
+      border-left: 2px solid var(--line);
+      padding-left: 24px;
+      margin-bottom: 36px;
+    }
+
+    .work-block:last-child { margin-bottom: 0; }
+
+    .work-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .work-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .work-period {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .work-org {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .work-site {
+      font-size: 0.80rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .work-block p {
+      font-size: 0.95rem;
+      color: #57534e;
+    }
+
+    /* Module tags */
+    .module-group {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    /* Interests */
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .interest-item {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 6px 16px;
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .interest-item:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Currently learning */
+    .learning-block {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+      border-radius: 2px;
+    }
+
+    .learning-block p {
+      font-size: 0.95rem;
+    }
+
+    /* Contact */
+    .contact-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      font-size: 0.88rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 400;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .contact-links a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 48px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="eyebrow">Healthcare · Data · AI</div>
+      <h1>Donghyun<br>Lee</h1>
+      <div class="affiliation">Seoul National University Bundang Hospital (SNUBH)</div>
+      <div class="location">Seongnam, South Korea</div>
+    </header>
+
+    <section>
+      <div class="section-label">About</div>
+      <p>I'm a healthcare data professional based in Seongnam, South Korea, working at Seoul National University Bundang Hospital (SNUBH). With years of experience as a business analyst and project consultant in medical information systems, I focus on bridging the gap between clinical operations and data-driven decision-making.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <div class="section-label">Work</div>
+
+      <div class="work-block">
+        <div class="work-header">
+          <span class="work-title">Data Convergence Team</span>
+          <span class="work-period">2024 — Present</span>
+        </div>
+        <div class="work-org">Seoul National University Bundang Hospital (SNUBH)</div>
+        <p>Leading the development of a hospital Command Center — a real-time operational dashboard covering bed management, operating room status, chronic disease monitoring, and patient referral workflows. Also driving AI governance initiatives, including HIMSS AMAM Stage 7 validation — a globally recognized framework that assesses a healthcare organization's maturity in adopting and managing AI across clinical and operational domains. In parallel, evaluating and overseeing the strategic adoption of AI technologies within the hospital, identifying use cases, assessing feasibility, and ensuring alignment with institutional and regulatory standards.</p>
+      </div>
+
+      <div class="work-block">
+        <div class="work-header">
+          <span class="work-title">HIS Implementation Specialist, Business Analyst</span>
+          <span class="work-period">2016 — 2020</span>
+        </div>
+        <div class="work-org">Seoul National University Bundang Hospital (SNUBH)</div>
+        <div class="work-site">Site: Aurora Behavioral Healthcare, California / Nevada / Arizona, USA</div>
+        <p>As an SNUBH-affiliated specialist, contributed to the U.S. rollout of BESTCare 2.0 at Aurora Behavioral Healthcare, a psychiatric hospital network spanning California, Nevada, and Arizona. Given the specialized nature of behavioral health operations, scope extended into modules specific to psychiatric care settings.</p>
+        <div class="module-group">
+          <span class="tag">Patient Administration</span>
+          <span class="tag">Physician</span>
+          <span class="tag">Nursing</span>
+          <span class="tag">Pharmacy</span>
+          <span class="tag">Intake Department</span>
+          <span class="tag">Business Center</span>
+          <span class="tag">Social Services</span>
+        </div>
+      </div>
+
+      <div class="work-block">
+        <div class="work-header">
+          <span class="work-title">HIS Implementation Specialist, Business Analyst</span>
+          <span class="work-period">2014 — 2016</span>
+        </div>
+        <div class="work-org">Seoul National University Bundang Hospital (SNUBH)</div>
+        <div class="work-site">Site: Ministry of National Guard Health Affairs, Saudi Arabia</div>
+        <p>As an SNUBH-affiliated specialist, supported the deployment of BESTCare 2.0 across hospitals operated by Saudi Arabia's Ministry of National Guard Health Affairs — one of the first large-scale exports of a Korean hospital information system to the Middle East. Scope covered the full breadth of core clinical, administrative, and data intelligence modules.</p>
+        <div class="module-group">
+          <span class="tag">Patient Administration</span>
+          <span class="tag">Physician</span>
+          <span class="tag">Nursing</span>
+          <span class="tag">Pharmacy</span>
+          <span class="tag">Ancillary</span>
+          <span class="tag">BI / CI / CDW</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <div class="section-label">Interests</div>
+      <div class="interest-list">
+        <span class="interest-item">Healthcare AI</span>
+        <span class="interest-item">Data Governance</span>
+        <span class="interest-item">Digital Transformation</span>
+        <span class="interest-item">Clinical Decision Support</span>
+        <span class="interest-item">Platform Strategy</span>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <div class="section-label">Currently Learning</div>
+      <div class="learning-block">
+        <p>Pursuing a Master's in Information Management at KAIST, with a focus on AI strategy, research methodology, and technology-driven business transformation.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <div class="section-label">Contact</div>
+      <div class="contact-links">
+        <a href="mailto:dh_lee@kaist.ac.kr">dh_lee@kaist.ac.kr</a>
+        <a href="https://github.com/dh-lee73" target="_blank">GitHub</a>
+      </div>
+    </section>
+
+    <footer>© 2026 Donghyun Lee</footer>
+
+  </div>
+</body>
+</html>
